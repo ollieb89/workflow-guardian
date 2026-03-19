@@ -1,0 +1,62 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Type-check, test, build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type check
+        run: npm run typecheck
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build dist
+        run: npm run build
+
+      - name: Verify dist was built
+        run: |
+          if [ ! -f dist/index.js ]; then
+            echo "dist/index.js not found — build failed"
+            exit 1
+          fi
+
+  self-lint:
+    name: Self-lint workflow files
+    needs: [test]
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build action
+        run: |
+          npm ci
+          npm run build
+
+      - name: Run Workflow Guardian on itself
+        uses: ./
+        with:
+          github-token: ${{ github.token }}

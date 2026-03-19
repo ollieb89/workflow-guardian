@@ -1,0 +1,60 @@
+name: 'Workflow Guardian'
+description: 'Advanced linter and security validator for GitHub Actions workflow files'
+author: 'workflow-guardian'
+
+branding:
+  icon: 'shield'
+  color: 'blue'
+
+inputs:
+  github-token:
+    description: 'GitHub token used to post PR comments and list changed files.'
+    required: false
+    default: ${{ github.token }}
+
+  check-undefined-actions:
+    description: >
+      Detect action references with no version pin, floating branch refs
+      (e.g. @main), and recommend SHA pinning.
+    required: false
+    default: 'true'
+
+  check-path-filters:
+    description: >
+      Catch common path/branch filter mistakes: mutually exclusive pairs
+      (paths + paths-ignore), empty filter arrays, and invalid glob patterns.
+    required: false
+    default: 'true'
+
+  check-matrix-strategy:
+    description: >
+      Validate matrix strategy syntax: empty dimension arrays, wrong types for
+      fail-fast / max-parallel, and misplaced include/exclude.
+    required: false
+    default: 'true'
+
+  check-deprecated:
+    description: >
+      Flag deprecated workflow commands (::set-env::, ::set-output::, etc.),
+      outdated action versions, and end-of-life Node runners.
+    required: false
+    default: 'true'
+
+  check-security:
+    description: >
+      Detect script-injection vulnerabilities (untrusted inputs interpolated
+      into run: scripts) and dangerous pull_request_target patterns.
+    required: false
+    default: 'true'
+
+outputs:
+  errors:
+    description: 'Number of error-severity findings.'
+  warnings:
+    description: 'Number of warning-severity findings.'
+  infos:
+    description: 'Number of info-severity findings.'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
