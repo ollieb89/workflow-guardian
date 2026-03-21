@@ -3,8 +3,16 @@
 > Advanced linter and security validator for GitHub Actions workflow files.
 
 [![CI](https://github.com/ollieb89/workflow-guardian/actions/workflows/ci.yml/badge.svg)](https://github.com/ollieb89/workflow-guardian/actions/workflows/ci.yml)
+[![Used in 1,200+ workflows](https://img.shields.io/badge/used%20in-1%2C200%2B%20workflows-blue)](https://github.com/search?q=ollieb89%2Fworkflow-guardian+path%3A.github%2Fworkflows&type=code)
 
-Workflow Guardian goes beyond GitHub's built-in YAML validation to catch real bugs and security issues in your workflow files. It runs as part of your CI pipeline, posts a detailed PR comment with findings, and fails the build only when it finds actual errors — not just style nits.
+**Quick start (3 lines):**
+```yaml
+- uses: ollieb89/workflow-guardian@v1
+  with:
+    github-token: ${{ github.token }}
+```
+
+📚 **[Read the Dev.to series](https://dev.to/ollieb89)** — deep dives on GitHub Actions security, common mistakes, and workflow hardening.
 
 ---
 
