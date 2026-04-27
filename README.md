@@ -292,11 +292,9 @@ MIT — see [LICENSE](LICENSE).
 ---
 
 ## 🔐 Level Up Your Security
-
-Using GitHub Actions? Grab the **[GitHub Actions Security Checklist](https://trivexia.gumroad.com/l/bfsbud)** — 50+ battle-tested checks covering secrets management, supply chain attacks, permission scoping, and runner hardening.
+Grab the **[GitHub Actions Security Checklist](https://trivexia.gumroad.com/l/bfsbud)** — 50+ battle-tested checks covering secrets management, supply chain attacks, permission scoping, and runner hardening.
 
 ---
 
 ## 🧠 Stop CI Debugging Hell
-
-Tired of scanning logs and rerunning jobs? Grab the **[CI Failure Recovery Pack](https://trivexia.gumroad.com/l/ci-failure-recovery-pack)** — includes the **GitHub Actions Triage Checklist** and the **CI Debugging Template** to help you find and fix root causes systematically.
+Grab the **[CI Failure Recovery Pack](https://trivexia.gumroad.com/l/ci-failure-recovery-pack)** — includes the **GitHub Actions Triage Checklist** and the **CI Debugging Template** to help you find and fix root causes systematically.
